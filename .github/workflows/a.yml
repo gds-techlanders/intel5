@@ -19,8 +19,12 @@ jobs:
       - name: step1
         run: echo "hello from step1, job1 of workflow1"
       - name: my step2
-        run: echo "hello from gagan"
-      - run: echo "hello from step3"
+        run: |
+          echo "hello from gagan"
+          sleep 10
+      - run: |
+          echo "hello from step3"
+          sleep 10
       - name: my step4 for testing multiple lines of code execution
         run: |
           ls -l
@@ -32,7 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
-        run: echo "hello from step1, job 2 of workflow1"
+        run: |
+           echo "hello from step1, job 2 of workflow1"
+           sleep 10
       - name: my step2
-        run: echo "hello from gagan"          
+        run: |
+          echo "hello from gagan"  
+          sleep 10
 
