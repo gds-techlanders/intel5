@@ -1,0 +1,23 @@
+name: continous-build
+on: push
+
+# Testing our first workflow
+
+jobs:
+  job1: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        run: echo "hello from step1, job1 of workflow1"
+      - name: my step2
+        run: echo "hello from gagan"
+      - run: echo "hello from step3"
+      - name: my step4 for testing multiple lines of code execution
+        run: |
+          ls -l
+          pwd
+          sudo cat /etc/os-release
+          uname -a
+          echo "final step4 execution done"
+          
+
