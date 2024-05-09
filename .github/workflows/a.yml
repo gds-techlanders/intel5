@@ -17,7 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
-        run: echo "hello from step1, job1 of workflow1"
+        run: |
+          echo "hello from step1, job1 of workflow1"
+          sleep 30
+          hostname
       - name: my step2
         run: |
           echo "hello from gagan"
@@ -38,7 +41,8 @@ jobs:
       - name: step1
         run: |
            echo "hello from step1, job 2 of workflow1"
-           sleep 10
+           sleep 30
+           hostname
       - name: my step2
         run: |
           echo "hello from gagan"  
