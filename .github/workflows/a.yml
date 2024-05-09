@@ -9,6 +9,7 @@ on:
      - main
   schedule:
     - cron: "*/5 * * * *"
+  workflow_dispatch:
 # Testing our first workflow
 
 jobs:
