@@ -19,13 +19,16 @@ jobs:
       lastname: singh
     steps:
       - name: step1
+        env:
+          greetings: GoodMorning
+          name: Sandeep
         run: |
-          echo "hello from $name $latname, job1 of workflow1 running in environment $environment"
-          sleep 30
+          echo "$greetings from $name $lastname, job1 of workflow1 running in environment $environment"
+          sleep 10
           hostname
       - name: my step2
         run: |
-          echo "hello from $name"
+          echo "$greetings from $name"
           sleep 10
       - run: |
           echo "hello from step3"
@@ -41,11 +44,10 @@ jobs:
     runs-on: gagan
     env:
       environment: staging
-      lastname: singh
     steps:
       - name: step1
         run: |
-           echo "hello from $name $lastname, job 2 of workflow1 running in environment $environment"
+           echo "$greetings from $name $lastname, job1 of workflow1 running in environment $environment"
            sleep 30
            hostname
       - name: my step2
