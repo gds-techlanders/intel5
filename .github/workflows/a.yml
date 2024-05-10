@@ -24,7 +24,7 @@ jobs:
           name: Sandeep
         run: |
           echo "$greetings from $name $lastname, job1 of workflow1 running in environment ${{ vars.environment}}"
-          echo "Running on server ${{ vars.servername}} "
+          echo "Running on server ${{ vars.servername}} with credentials ${{ secrets.SERVER_PASSWD }} and API KEY ${{ secrets.APIKEY }} "
           sleep 10
           hostname
       - name: my step2
@@ -47,7 +47,8 @@ jobs:
     steps:
       - name: step1
         run: |
-           echo "$greetings from $name $lastname, job1 of workflow1 running in environment ${{ vars.environment }}"
+           echo "Running on server ${{ vars.servername}} with credentials ${{ secrets.SERVER_PASSWD }} and API KEY ${{ secrets.APIKEY }} "
+           echo "Running on server ${{ vars.servername}} with credentials ${{ secrets.SERVER_PASSWD }} and API KEY ${{ secrets.APIKEY }} " >> /tmp/actionfile
            echo "Running on server ${{ vars.servername}} "
            sleep 30
            hostname
