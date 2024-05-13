@@ -38,7 +38,9 @@ jobs:
           echo "hello from step1"
           sleep 10
       - name: my step2
-
+        run: |
+          echo "hello from step2"
+          sleep 10
   notification-start: 
     runs-on: ubuntu-latest
     steps:
