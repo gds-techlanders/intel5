@@ -55,6 +55,7 @@ jobs:
         run: |
           echo "hello from step2"
           sleep 10
+          
   notification-start: 
     runs-on: ubuntu-latest
     steps:
@@ -62,3 +63,12 @@ jobs:
         run: |
           echo "Job started"
           sleep 10
+  notification-failed:
+     runs-on: ubuntu-latest
+     needs: build-a
+     if: ${{ needs.build.result == 'failure' || failure() }}
+     steps:
+       - name: notify
+         run: |
+           echo "Build step got failed"
+           sleep 10
