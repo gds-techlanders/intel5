@@ -23,7 +23,7 @@ jobs:
           greetings: GoodMorning
           name: Sandeep
         run: |
-          echo "$greetings from $name $lastname, job1 of workflow1 running in environment ${{ vars.environment}}"
+          echo "$greetings from $name $lastname, job1 of workflow1 in repository ${{ GITHUB.REPOSITORY }} running in environment ${{ vars.environment}} on RUNNER OS ${{ runner.os }}"
           echo "Running on server ${{ vars.servername}} with credentials ${{ secrets.SERVER_PASSWD }} and API KEY ${{ secrets.APIKEY }} "
           sleep 10
           hostname
@@ -42,7 +42,7 @@ jobs:
           uname -a
           echo "final step4 execution done"
   test: 
-    runs-on: gagan
+    runs-on: ubuntu-latest
     environment: test
     steps:
       - name: step1
