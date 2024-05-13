@@ -19,6 +19,7 @@ jobs:
           sleep 10
   test: 
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: step1
         run: |
@@ -30,6 +31,7 @@ jobs:
           sleep 10
   deploy: 
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: step1
         run: |
