@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
+        continue-on-error: true
         run: |
           echo "hello from step1"
           exit 1
