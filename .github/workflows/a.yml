@@ -19,6 +19,7 @@ jobs:
       lastname: singh
     steps:
       - name: step1
+        if: github.event_name == 'push'
         env:
           greetings: GoodMorning
           name: Sandeep
@@ -43,6 +44,7 @@ jobs:
           echo "final step4 execution done"
   test: 
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     environment: test
     steps:
       - name: step1
