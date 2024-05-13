@@ -48,7 +48,3 @@ jobs:
         run: |
           echo "Job started"
           sleep 10
-  
-        run: |
-          echo "$greetings from $name"
-          sleep 10
