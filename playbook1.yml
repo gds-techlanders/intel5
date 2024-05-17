@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+    - name: Create user Gagandeep
+      user:
+        name: gagandeep2
+        state: present
+    - name: install a package
+      package:
+        name: telnet
+        state: present
+    - name: copy file to next machine
+      copy:
+        src: ./guifile
+        dest: /tmp/
