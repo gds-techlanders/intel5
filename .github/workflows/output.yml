@@ -1,24 +1,27 @@
-name: output
+name: Artifacts
 on:
   push:
     branches: [ "main" ]
 jobs:
-  job1:
+  build:
     runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      output1: ${{ steps.step1.outputs.a }}
-      output2: ${{ steps.step2.outputs.b }}
     steps:
-      - id: step1
-        run: echo "a=hello" >> "$GITHUB_OUTPUT"
-      - id: step2
-        run: echo "b=world" >> "$GITHUB_OUTPUT"
-  job2:
+      - uses: actions/checkout@v2
+      - run: mkdir -p gagan-dir
+      - run: echo hello > gagan-dir/world.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: gagan-dir/world.txt
+  deploy:
     runs-on: ubuntu-latest
-    needs: job1
+    needs: build
     steps:
-      - env:
-          OUTPUT1: ${{needs.job1.outputs.output1}}
-          OUTPUT2: ${{needs.job1.outputs.output2}}
-        run: echo "$OUTPUT1 $OUTPUT2"
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+      - name: testing file
+        run: |
+          cat world.txt
+          ls
