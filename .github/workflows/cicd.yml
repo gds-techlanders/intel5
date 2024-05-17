@@ -43,12 +43,14 @@ jobs:
           echo "$greetings from $name"
           sleep 10
   deploy: 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: test
     steps:
+      - name: clone the repository
+        uses: actions/checkout@v4.1.5
       - name: step1
         run: |
-          echo "hello from step1"
+          sudo ansible-playbook playbook1.yml
           sleep 10
       - name: my step2
         run: |
